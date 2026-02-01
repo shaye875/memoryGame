@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #board-game{
+            display: grid;
+            grid-template-columns: 23.5% 23.5% 23.5% 20%;
+            grid-template-rows: 34.5 34.5 31%;
+            gap: 2px;
+        }
+        .card{
+            
+            width: 20%;
+            height: 31%;
+            background-color: black;
+        }
+        .flipped{
+            background-color: rgb(231, 231, 183);
+        }
+    </style>
+</head>
+<body>
+    <div id="board-game"></div>
+</body>
+<script>
+   const board = document.getElementById("board-game")
+   const arr =  ["😊","😊","😂","😂","🤣","🤣","❤️","❤️","😍","😍","😁","😁"]
+   arr.forEach((emage)=>{
+    let div = document.createElement("div")
+    let image = document.createTextNode(emage)
+    div.appendChild(image)
+    div.classList.add("card")
+    board.appendChild(div)
+   })
+
+</script>
+</html>
