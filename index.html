@@ -27,6 +27,10 @@
         .flipped {
             background-color: rgb(231, 231, 183);
         }
+
+        .yees {
+            color: yellow;
+        }
     </style>
 </head>
 
@@ -36,7 +40,9 @@
 <script>
     const board = document.getElementById("board-game")
     const arr = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F"]
-    arr.forEach((emage) => {
+   const arr2 = []
+    const indexs = []
+    arr.forEach((emage,i) => {
         let div = document.createElement("div")
         let p = document.createElement("p")
 
@@ -44,30 +50,61 @@
         p.appendChild(image)
         div.appendChild(image)
         div.classList.add("card")
+         div.addEventListener("dblclick", () => {
+           div.classList.add("flipped")
+            arr2.push(div)
+            indexs.push(i)
+            console.log(indexs);
+            
+            const flipped = document.getElementsByClassName("flipped")
+                        console.log(div);
+                        
+                      if (arr2.length === 2) {
+                if (arr2[0].textContent === arr2[1].textContent && indexs[0] !== indexs[1]) {
+                    setTimeout(() => {
+                        arr2[0].remove()
+                        arr2[1].remove()
+                        arr2.splice(0, 2)
+                        indexs.splice(0,2)
+                    }, 1000)
+                   
+                } else {
+                    setTimeout(() => {
+                        arr2[0].classList.remove("flipped")
+                        arr2[1].classList.remove("flipped")
+                        arr2.splice(0, 2)
+                        indexs.splice(0,2)
+                    }, 1000)
+                }
+              
+            }
+         })
         board.appendChild(div)
+          
     })
-    const collection = document.getElementsByClassName("card")
+    const div = document.getElementsByClassName("card")
+
     let a = 1
     let bool = true
-    for (let i = 0; i < collection.length; i++) {
-
-        collection[i].addEventListener("dblclick", () => {
-            collection[i].classList.add("flipped")
-            if (bool === true && typeof a === 'object' && a.textContent !== collection[i].textContent) {
-                setTimeout(() => {
-                    a.classList.remove("flipped")
-                    collection[i].classList.remove("flipped")
-                }, 1000)
-                bool = false
-            }else{
-            
-            }
-            if (bool === true) {
-                a = collection[i]
-            }
-        })
+    function colback() {
 
     }
+   
+    for (let i = 0; i < div.length; i++) {
+        div[i].addEventListener("dblclick", () => {
+          
+    
+        })
+
+
+    }
+
+
+
+
+
+
+
 
 
 
